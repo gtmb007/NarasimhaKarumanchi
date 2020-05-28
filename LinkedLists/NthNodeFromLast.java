@@ -9,7 +9,7 @@ class ListNode {
 class Main {
 	static int counter;
 	static ListNode res;
-	static ListNode kthNodeFromLast(ListNode head, int k) {
+	static ListNode nthNodeFromLast(ListNode head, int k) {
 		ListNode temp=head;
 		int l=0;
 		while(temp!=null) {
@@ -23,7 +23,7 @@ class Main {
 		}
 		return temp;
 	}
-	static ListNode kthNodeFromLast1(ListNode head, int k) {
+	static ListNode nthNodeFromLast1(ListNode head, int k) {
 		ListNode slow=head, fast=head;
 		while(fast.next!=null) {
 			if(k>1) {
@@ -36,9 +36,9 @@ class Main {
 		}
 		return slow;
 	}
-	static void kthNodeFromLast2(ListNode head, int k) {
+	static void nthNodeFromLast2(ListNode head, int k) {
 		if(head!=null) {
-			kthNodeFromLast2(head.next, k);
+			nthNodeFromLast2(head.next, k);
 			counter++;
 			if(counter==k) res=head;	
 		}
@@ -59,10 +59,9 @@ class Main {
 			}
 		}	
 		int k=sc.nextInt();
-		System.out.println(kthNodeFromLast(head, k).val);	
-		System.out.println(kthNodeFromLast1(head, k).val);
-		kthNodeFromLast2(head, k);
+		System.out.println(nthNodeFromLast(head, k).val);	
+		System.out.println(nthNodeFromLast1(head, k).val);
+		nthNodeFromLast2(head, k);
 		System.out.println(res.val);
-		System.out.println(head.val);
 	}	
 }

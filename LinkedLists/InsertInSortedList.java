@@ -39,8 +39,7 @@ class Main {
 			}
 		}
 		ListNode node=new ListNode(sc.nextInt());
-		insertNode(head, node);
-		temp=head;
+		temp=insertNode(head, node);
 		while(temp!=null) {
 			System.out.print(temp.val+" ");
 			temp=temp.next;
