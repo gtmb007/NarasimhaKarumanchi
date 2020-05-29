@@ -7,6 +7,18 @@ class ListNode {
 	}
 }
 class Main {
+	static ListNode revHead, revTemp;
+	static void reverseList1(ListNode temp1) {
+		if(temp1==null) return;
+		reverseList1(temp1.next);
+		if(revHead==null) {
+			revHead=temp1;
+			revTemp=revHead;
+		} else {
+			revTemp.next=temp1;
+			revTemp=revTemp.next;
+		}
+	}
 	static ListNode reverseList(ListNode head) {
 		ListNode prev=null;
 		ListNode curr=head;
@@ -34,10 +46,18 @@ class Main {
 				temp=temp.next;
 			}
 		}
-		temp=reverseList(head);
+		ListNode temp1=reverseList(head);
+		temp=temp1;
 		while(temp!=null) {
 			System.out.print(temp.val+" ");
 			temp=temp.next;
+		}
+		System.out.println();
+		reverseList1(temp1);
+		if(revTemp!=null) revTemp.next=null;
+		while(revHead!=null) {
+			System.out.print(revHead.val+" ");
+			revHead=revHead.next;
 		}
 		System.out.println();
 	}
